@@ -15,7 +15,7 @@ import java.util.Objects;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "login",nullable = false, unique = true)
@@ -31,7 +31,7 @@ public class User {
     private Integer age;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(foreignKey = @ForeignKey(name = "fk_users_address_id"))
+    @JoinColumn(name = "address_id", foreignKey = @ForeignKey(name = "fk_users_address_id"))
     private Address address;
 
     @Override

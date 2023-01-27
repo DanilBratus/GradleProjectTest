@@ -6,7 +6,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class CreateUserRequest {
-    private Integer id;
     private String login;
     private String firstName;
     private String secondName;

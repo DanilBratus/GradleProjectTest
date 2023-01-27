@@ -1,11 +1,11 @@
 package com.example.service;
 
+import com.example.model.Address;
+import com.example.model.User;
 import com.example.model.request.CreateAddressRequest;
 import com.example.model.request.CreateUserRequest;
 import com.example.model.response.AddressResponse;
 import com.example.model.response.UserResponse;
-import com.example.model.Address;
-import com.example.model.User;
 import com.example.repositories.UserRepository;
 import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
-    private static UserRepository repository;
+    private final UserRepository repository;
 
     @NotNull
     @Override
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService{
     public UserResponse userById(@NotNull Integer id) {
         return repository.findById(id)
                 .map(this::buildResponse)
-                .orElseThrow(() -> new EntityNotFoundException("User " + id + "is not found"));
+                .orElseThrow(() -> new EntityNotFoundException("User " + id + " is not found"));
     }
 
     @NotNull
